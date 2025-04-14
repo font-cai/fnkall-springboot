@@ -7,4 +7,8 @@ import java.util.List;
 public interface DeptService {
 
     List<Dept> findAll();
+    void save(String name);
+    void deleteById(Integer id);
+
+    void updateById(Dept dept);
 }
