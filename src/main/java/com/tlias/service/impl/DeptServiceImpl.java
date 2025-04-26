@@ -13,8 +13,8 @@ public class DeptServiceImpl implements DeptService {
     @Autowired
     private DeptMapper deptMapper;
     @Override
-    public List<Dept> findAll() {
-        return deptMapper.findAll();
+    public List<Dept> findAll(String name) {
+        return deptMapper.findAll(name);
     }
 
     @Override

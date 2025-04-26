@@ -15,15 +15,15 @@ public class DeptController {
     @Autowired
     private DeptService deptService;
     @GetMapping("/depts")
-    public Result list () {
-        System.out.println("查询部门数据");
-        List<Dept> deptList = deptService.findAll();
-        System.out.println("查询部门数据成功"+Result.success(deptList));
+    public Result list (String name) {
+        log.info("查询部门数据"+name);
+        List<Dept> deptList = deptService.findAll(name);
        return Result.success(deptList);
     }
     @PostMapping("/depts")
-    public Result save(String name) {
-        System.out.println("保存部门数据"+name);
+    public Result save(@RequestBody Dept dept) {
+        System.out.println("保存部门数据"+dept.toString());
+        String name = dept.getName();
         deptService.save(name);
         return Result.success();
     }
@@ -40,8 +40,5 @@ public class DeptController {
         deptService.updateById(dept);
         return Result.success();
     }
-//    @PostMapping("/api/v1/auth/login")
-//    public Result loginTest(){
-//        return Result.success();
-//    }
 }
+

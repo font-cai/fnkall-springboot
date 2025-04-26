@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tlias.mapper.DeptMapper">
+
+    <select id="findAll" resultType="com.tlias.pojo.Dept">
+        select id, name, UNIX_TIMESTAMP(create_time) as createTime, UNIX_TIMESTAMP(update_time) as updateTime
+        from dept
+        <where>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+        </where>
+        order by update_time desc
+    </select>
+
+<!--    <insert id="save">-->
+<!--        insert into dept(name, create_time, update_time) values (#{name}, now(), now())-->
+<!--    </insert>-->
+
+<!--    <delete id="deleteById">-->
+<!--        delete from dept where id = #{id}-->
+<!--    </delete>-->
+
+<!--    <update id="updateById">-->
+<!--        update dept set name = #{name}, update_time = now() where id = #{id}-->
+<!--    </update>-->
+
+</mapper>
