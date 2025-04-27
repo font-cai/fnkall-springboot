@@ -10,5 +10,7 @@ public interface DeptService {
     void save(String name);
     void deleteById(Integer id);
 
+    void deleteByIds(List<Integer> ids);
+
     void updateById(Dept dept);
 }

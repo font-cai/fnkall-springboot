@@ -26,6 +26,10 @@ public class DeptServiceImpl implements DeptService {
         deptMapper.deleteById(id);
     }
     @Override
+    public void deleteByIds(List<Integer> ids) {
+        deptMapper.deleteByIds(ids);
+    }
+    @Override
     public void updateById(Dept dept) {
         deptMapper.updateById(dept);
     }

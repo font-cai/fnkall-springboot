@@ -16,16 +16,21 @@
         order by update_time desc
     </select>
 
-<!--    <insert id="save">-->
-<!--        insert into dept(name, create_time, update_time) values (#{name}, now(), now())-->
-<!--    </insert>-->
+    <insert id="save">
+        insert into dept(name, create_time, update_time) values (#{name}, now(), now())
+    </insert>
 
-<!--    <delete id="deleteById">-->
-<!--        delete from dept where id = #{id}-->
-<!--    </delete>-->
-
-<!--    <update id="updateById">-->
-<!--        update dept set name = #{name}, update_time = now() where id = #{id}-->
-<!--    </update>-->
+    <delete id="deleteById">
+        delete from dept where id = #{id}
+    </delete>
+    <delete id="deleteByIds">
+        delete from dept where id in
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </delete>
+    <update id="updateById">
+        update dept set name = #{name}, update_time = now() where id = #{id}
+    </update>
 
 </mapper>
